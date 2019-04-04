@@ -6,11 +6,23 @@ slidenumbers: true
 ^ Brief introduction about me
 
 ---
+[.autoscale: true]
 
-# Introduction
+# Contents
+
+1. Background of computer graphics 
+2. Core computer graphics concepts
+3. Introduction to OpenGL
+4. How to use OpenGL
+5. Brief demo
+
+---
+
+# Introduction to computer graphics
 
 ^ Computer graphics is something that all of us use every day, but most of us probably don't know much about it
 ^ Most of us won't write graphical programs running at such a low level, but it is cool to understand how things work
+
 
 ---
 
@@ -105,6 +117,8 @@ slidenumbers: true
 * Lines
 * Triangles
 
+^ Primitives are defined as vectors with a length of four
+^ They contain x, y, z, and w elements
 ^ These are the three most important primivites in graphics rendering
 ^ With these primitives, you can draw anything you want
 
@@ -114,44 +128,27 @@ slidenumbers: true
 
 ![inline](img/teapot-wireframe.png)
 
+[^1]: Image from https://fgiesen.wordpress.com/2011/07/01/a-trip-through-the-graphics-pipeline-2011-part-1/
+
 ---
 
 # Matrices
 
 ^ OpenGL uses matrices to transform the vector we define primitives with
 ^ There are several common matrices used -- we will cover model and projection matrices
-^ Projection matrices define how our primitives are projected on the screen from a 3D space to a 2D space
-^ Model matrices modify positions of primitives
-^ Model matrices allow us to translate, rotate, and scale primitives
 
 ---
 
 # Projection Matrix
 
-$$
-  \begin{bmatrix}
-    \dfrac{\dfrac{1}{tan(\dfrac{\mathit{fov}}{2})}}{a} &
-    0 &
-    0 &
-    0 \\ \\
-    0 &
-    \dfrac{1}{tan(\dfrac{\mathit{fov}}{2})} &
-    0 &
-    0 \\ \\
-    0 &
-    0 &
-    \dfrac{-(z_f + z_n)}{z_f - z_n} &
-    \dfrac{-(2 * z_f * z_n)}{z_f - z_n} \\ \\
-    0 &
-    0 &
-    -1 &
-    0
-  \end{bmatrix}
-$$
+^ Projection matrices define how our primitives are projected on the screen from a 3D space to a 2D space
 
-^ fov is the of field, or the angle of the area that is visible
-^ z near is the closest visible z coordinate
-^ z far is the furthest visible z coordinate
+---
+
+# Model Matrix
+
+^ Model matrices modify positions of primitives
+^ Model matrices allow us to translate, rotate, and scale primitives
 
 ---
 
@@ -164,7 +161,6 @@ $$
 ---
 
 # Where does OpenGL work?
-* Language bindings exist for most languages
 
 ^ OpenGL is callable from most programming languages
 ^ OpenGL works one every major operating system, and with every major windowing system
@@ -181,12 +177,16 @@ $$
 
 # Getting Started with lwjgl
 
+* lwjgl: Lightweight Java Game Library
+
 ^ We will begin with creating a blank window on our desktop
 ^ This isn't particularly impressive, but it is a good place to start
 
 ---
 
 # Creating a Window with GLFW
+
+* GLFW: Graphics Library Framework
 
 ^ GLFW, or Graphics Library Framework, is a cross-platform library for creating windows and handling window events such as input
 ^ GLFW will create our window for us, and something called an OpenGL context
@@ -410,54 +410,78 @@ void main() {
 ---
 
 # References
-* https://www.khronos.org/opengl/wiki/Language_bindings
-* https://fgiesen.wordpress.com/2011/07/01/a-trip-through-the-graphics-pipeline-2011-part-1/
+* 
 
 ---
 
-# Appendix #1: Clipping
+# Appendix: Clipping
 
-Clipping occurs as part of the vertex post-processing stage.
+![inline](img/clipping.png)
 
-Primitives outside of the viewing area are removed. Primitives that are only partially inside the viewing area are split into several primitives so that the entire primitive lies inside of the viewing area.
-
----
-
-# Appendix #2: Culling
-
-Culling occurs during the primitive assembly stage.
-
-Primitives covered by facing away from the viewer can be discarded. This is useful since back-facing primitives are not visible in closed objects.
-
-OpenGL determines the signed area of each primitive. If the area is negative, then no part of the primitive is visible and it can be discarded.
+^ https://paroj.github.io/gltut/Positioning/Tut05%20Boundaries%20and%20Clipping.html
 
 ---
 
-# Appendix #3: Depth Testing
+# Appendix: Culling
 
-OpenGL uses depth testing to ensure that primitives further to the viewer do not overwrite primitives closer to the viewer.
+![inline](img/culling.png)
 
-OpenGL keeps a depth buffer of each fragment. It stores the z coordinate of written fragments, and compares the z coordinate against the contents of the depth buffer.
-
----
-
-# Appendix #4: Lighting
+^ http://glasnost.itcarlow.ie/~powerk/technology/opengl/hsr_culling.html
 
 ---
 
-# Appendix #5: Matrices
+# Appendix: Depth Testing
+
+
+![inline](img/depth-test.png)
+
+^ https://stackoverflow.com/questions/30310024/opengl-depth-test-doesnt-work
 
 ---
 
-# Appendix #6: Coordinate Spaces
+# Appendix: Projection Matrix
+
+\[
+  \begin{bmatrix}
+    \dfrac{\dfrac{1}{tan(\dfrac{\mathit{fov}}{2})}}{a} &
+    0 &
+    0 &
+    0 \\ \\
+    0 &
+    \dfrac{1}{tan(\dfrac{\mathit{fov}}{2})} &
+    0 &
+    0 \\ \\
+    0 &
+    0 &
+    \dfrac{-(z_f + z_n)}{z_f - z_n} &
+    \dfrac{-(2 * z_f * z_n)}{z_f - z_n} \\ \\
+    0 &
+    0 &
+    -1 &
+    0
+  \end{bmatrix}
+\]
+
+^ fov is the of field, or the angle of the area that is visible
+^ z near is the closest visible z coordinate
+^ z far is the furthest visible z coordinate
 
 ---
 
-# Appendix #7: w coordinate
+# Appendix: Coordinate Spaces
+
+![inline](img/coordinate-systems.png)
+
+^ https://learnopengl.com/Getting-started/Coordinate-Systems
 
 ---
 
-# Appendix #8: OpenGL Language Bindings
+# Appendix: w coordinate
+
+---
+
+[.autoscale: true]
+# Appendix: OpenGL Language Bindings
 * Ada
 * C
 * Common LISP
@@ -474,14 +498,30 @@ OpenGL keeps a depth buffer of each fragment. It stores the z coordinate of writ
 * Ruby
 * Visual Basic
 
----
-
-# Appendix #9: Texture Filtering
+^ https://www.khronos.org/opengl/wiki/Language_bindings
 
 ---
 
-# Appendix #10: Mipmaps
+# Appendix: Texture Filtering
+![inline](img/texture-filtering.png)
+
+^ https://learnopengl.com/Getting-started/Textures
 
 ---
 
-# Appendix #11: Other Shader Stages
+# Appendix: Texture wrapping
+![inline](img/texture-wrapping.png)
+
+^ https://learnopengl.com/Getting-started/Textures
+
+---
+
+# Appendix: Mipmaps
+![inline](img/mipmap.png)
+
+^ https://learnopengl.com/Getting-started/Textures
+
+---
+
+# Appendix: Other Shader Stages
+![inline](img/pipeline.png)
