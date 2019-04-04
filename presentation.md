@@ -70,12 +70,6 @@ slidenumbers: true
 
 ---
 
-# GPU Architecture
-
-A diagram goes here
-
----
-
 # Programming a GPU
 
 ^ Programming a CPU involves writing code, compiling it, and then executing a binary
@@ -118,11 +112,46 @@ A diagram goes here
 
 # Drawing a Complex Object
 
-An image of a wireframe should go here
+![inline](img/teapot-wireframe.png)
 
 ---
 
 # Matrices
+
+^ OpenGL uses matrices to transform the vector we define primitives with
+^ There are several common matrices used -- we will cover model and projection matrices
+^ Projection matrices define how our primitives are projected on the screen from a 3D space to a 2D space
+^ Model matrices modify positions of primitives
+^ Model matrices allow us to translate, rotate, and scale primitives
+
+---
+
+# Projection Matrix
+
+$$
+  \begin{bmatrix}
+    \dfrac{\dfrac{1}{tan(\dfrac{\mathit{fov}}{2})}}{a} &
+    0 &
+    0 &
+    0 \\ \\
+    0 &
+    \dfrac{1}{tan(\dfrac{\mathit{fov}}{2})} &
+    0 &
+    0 \\ \\
+    0 &
+    0 &
+    \dfrac{-(z_f + z_n)}{z_f - z_n} &
+    \dfrac{-(2 * z_f * z_n)}{z_f - z_n} \\ \\
+    0 &
+    0 &
+    -1 &
+    0
+  \end{bmatrix}
+$$
+
+^ fov is the of field, or the angle of the area that is visible
+^ z near is the closest visible z coordinate
+^ z far is the furthest visible z coordinate
 
 ---
 
@@ -200,31 +229,78 @@ GL.createCapabilities();
 
 ---
 
+# OpenGL API Patterns
+
+---
+
 # Creating a VBO
+
+```java
+// Create a VBO and store its name
+glVboName = glGenBuffers();
+
+// Bind the VBO created in the last step
+glBindBuffer(GL_ARRAY_BUFFER, glVboName);
+```
+
+---
+
+# Sending Data to a VBO
+
+```java
+float[] vertices = new float[]{
+    0.0f, 0.5f, 0.0f,
+    -0.5f, -0.5f, 0.0f,
+    0.5f, -0.5f, 0.0f
+};
+
+try (var stack = MemoryStack.stackPush()) {
+  // Allocate a native buffer to store the vertices
+  var vertexBuffer = stack.mallocFloat(vertices.length);
+
+  // Put the previously declared vertices into the float buffer
+  vertexBuffer.put(vertices);
+  vertexBuffer.flip();
+
+  // Send the vertices to the graphics hardware
+  glBufferData(GL_ARRAY_BUFFER, vertexBuffer, GL_STATIC_DRAW);
+}
+```
 
 ---
 
 # Creating a VAO
 
+```java
+// Create a VAO and store its name
+glVaoName = glGenVertexArrays();
+
+// Bind the VAO that was just created
+glBindVertexArray(glVaoName);
+```
+
 ---
 
 # Binding a VBO to a VAO
 
+```java
+// Bind the previously created VBO
+glBindBuffer(GL_ARRAY_BUFFER, glVboName);
+
+// Have the first VAO index point to the bound VBO
+glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0);
+
+// Enable the first VAO index
+glEnableVertexAttribArray(0);
+```
+
 ---
 
-# Binding a VAO and drawing it
+# Drawing a VAO
 
----
-
-# Our First Triangle
-
----
-
-# Uniforms
-
----
-
-# Indexed Rendering
+```java
+glDrawArrays(GL_TRIANGLES, 0, 3);
+```
 
 ---
 
@@ -236,7 +312,100 @@ GL.createCapabilities();
 
 ---
 
+# Vertex Shader
+
+```c
+#version 330 core
+
+// A vector of 3 floats at index 0 of the VAO
+layout (location = 0) in vec3 position;
+
+// A vector of 4 floats at index 1 of the VAO
+layout (location = 1) in vec4 inColor;
+
+// Output a vector of 4 floats
+out vec4 color;
+
+void main() {
+    // Transform the position of the vertex by the projection matrix
+    gl_Position = vec4(position, 1.0);
+
+    // Pass the color to the fragment shader
+    color = inColor;
+}
+```
+
+---
+
+# Fragment Shader
+```c
+#version 330 core
+
+// A vector of 4 floats in
+in vec4 color;
+
+// A vector of 4 floats out
+out vec4 outColor;
+
+void main() {
+    // Set the outgoing color to the incoming color
+    outColor = color;
+}
+
+```
+
+---
+
+# Our First Triangle
+
+![inline](img/triangle.png)
+
+---
+
+# Uniforms
+
+---
+
+# Setting a Uniform
+
+```java
+glUniformName = glGetUniformLocation(glShaderProgramName, name);
+try (MemoryStack stack = MemoryStack.stackPush()) {
+  FloatBuffer fb = stack.mallocFloat(16);
+  matrix.get(fb);
+  glUniformMatrix4fv(glUniformName, false, fb);
+}
+```
+
+---
+
+# Using a Uniform
+
+```c
+uniform mat4 projectionMatrix;
+uniform mat4 modelMatrix;
+
+void main() {
+    gl_Position = projectionMatrix * modelMatrix * vec4(inPosition, 1.0);
+    outputs.color = inColor;
+}
+```
+
+---
+
+# Indexed Rendering
+
+---
+
 # Textures
+
+---
+
+# Drawing a Textured Cube
+
+---
+
+# Conclusion
 
 ---
 
@@ -248,29 +417,47 @@ GL.createCapabilities();
 
 # Appendix #1: Clipping
 
+Clipping occurs as part of the vertex post-processing stage.
+
+Primitives outside of the viewing area are removed. Primitives that are only partially inside the viewing area are split into several primitives so that the entire primitive lies inside of the viewing area.
+
 ---
 
 # Appendix #2: Culling
 
----
+Culling occurs during the primitive assembly stage.
 
-# Appendix #3: Lighting
+Primitives covered by facing away from the viewer can be discarded. This is useful since back-facing primitives are not visible in closed objects.
 
----
-
-# Appendix #4: Matrices
+OpenGL determines the signed area of each primitive. If the area is negative, then no part of the primitive is visible and it can be discarded.
 
 ---
 
-# Appendix #5: Coordinate Spaces
+# Appendix #3: Depth Testing
+
+OpenGL uses depth testing to ensure that primitives further to the viewer do not overwrite primitives closer to the viewer.
+
+OpenGL keeps a depth buffer of each fragment. It stores the z coordinate of written fragments, and compares the z coordinate against the contents of the depth buffer.
 
 ---
 
-# Appendix #6: w coordinate
+# Appendix #4: Lighting
 
 ---
 
-# Appendix #7: Language bindings
+# Appendix #5: Matrices
+
+---
+
+# Appendix #6: Coordinate Spaces
+
+---
+
+# Appendix #7: w coordinate
+
+---
+
+# Appendix #8: OpenGL Language Bindings
 * Ada
 * C
 * Common LISP
@@ -286,3 +473,15 @@ GL.createCapabilities();
 * Python
 * Ruby
 * Visual Basic
+
+---
+
+# Appendix #9: Texture Filtering
+
+---
+
+# Appendix #10: Mipmaps
+
+---
+
+# Appendix #11: Other Shader Stages
