@@ -441,7 +441,7 @@ void main() {
 
 # Appendix: Projection Matrix
 
-$$
+`\[
   \begin{bmatrix}
     \dfrac{\dfrac{1}{tan(\dfrac{\mathit{fov}}{2})}}{a} &
     0 &
@@ -454,13 +454,13 @@ $$
     0 &
     0 &
     \dfrac{-(z_f + z_n)}{z_f - z_n} &
-    \dfrac{-(2 * z_f * z_n)}{z_f - z_n} \\ \\
+    \dfrac{-(2 \* z_f \* z_n)}{z_f - z_n} \\ \\
     0 &
     0 &
     -1 &
     0
   \end{bmatrix}
-$$
+\]`
 
 ^ fov is the of field, or the angle of the area that is visible
 ^ z near is the closest visible z coordinate
