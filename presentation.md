@@ -1,3 +1,4 @@
+theme: Plain Jane, 1
 slidenumbers: true
 
 # 3D Graphics Rendering with OpenGL
@@ -22,6 +23,12 @@ slidenumbers: true
 ^
 The process of creating an image from a 2D or 3D scene
 We see it in action every day on our phones, laptops, and every Friday on this projector
+
+---
+
+# What is Graphics Rendering?
+
+![inline](img/triangle-rendering.png)
 
 ---
 
@@ -175,8 +182,8 @@ OpenGL works one every major operating system, and with every major windowing sy
 
 # Java and OpenGL
 
-* JOGL: Java OpenGL
 * lwjgl: Lightweight Java Game Library
+* JOGL: Java OpenGL
 
 ^
 Java has great support for OpenGL through a library called the Lightweight Java Game Library (lwjgl)
@@ -302,6 +309,12 @@ glEnableVertexAttribArray(0);
 
 ---
 
+# Binding a VBO to a VAO
+
+![inline](img/vbo-vao-ebo.png)
+
+---
+
 # Drawing a VAO
 
 ```java
@@ -312,7 +325,7 @@ glDrawArrays(GL_TRIANGLES, 0, 3);
 
 # The Rendering Pipeline
 
-![inline](img/pipeline-visualized.png)
+![inline](img/pipeline.png)
 
 ---
 
@@ -560,6 +573,12 @@ $$
 
 ---
 
+# Appendix: Projection Matrix
+
+![inline](img/projection-matrix.png)
+
+---
+
 # Appendix: Coordinate Spaces
 
 ![inline](img/coordinate-systems.png)
@@ -620,5 +639,5 @@ https://learnopengl.com/Getting-started/Textures
 
 ---
 
-# Appendix: Other Shader Stages
-![inline](img/pipeline.png)
+# Appendix: Pipeline Visualization
+![inline](img/pipeline-visualized.png)
