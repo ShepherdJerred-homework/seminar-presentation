@@ -223,9 +223,6 @@ Note:
 
 # Creating a Window with GLFW
 
-@[3](Init)
-@[6](Window)
-
 ```java
 // Initialize GLFW
 // Checks what features the machine has, finds input methods, performs platform-specific initialization
