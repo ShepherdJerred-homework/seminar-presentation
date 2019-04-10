@@ -618,7 +618,6 @@ https://learnopengl.com/Getting-started/Coordinate-Systems
 
 ---
 
-[.autoscale: true]
 # Appendix: OpenGL Language Bindings
 * Ada
 * C
