@@ -8,6 +8,7 @@ published: true
 remote-control: true
 eager-loading: true
 mathjax: TeX-MML-AM_HTMLorMML-full
+slide-number: true
 
 # Code settings
 code-line-numbers: true
