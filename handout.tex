@@ -72,7 +72,7 @@
 
 % Create title
 \usepackage{titling}
-\setlength{\droptitle}{-40pt}
+\setlength{\droptitle}{-70pt}
 \title{\Large\textbf{3D Graphics Rendering with OpenGL}}
 \author{Jerred Shepherd}
 
@@ -85,7 +85,18 @@
   \section{Abstract}
   Computer graphics is an essential component to any consumer facing computer. Efficiently rendering computer graphics requires the use of specialized hardware in the form of graphics processing units. GPUs work differently than the CPUs which programmers are experienced with. This difference is due to the GPUs approach to parallelization. Graphics APIs have been created to help programmers write performant and portable code for GPUs. This paper will introduce the core concepts of 3D graphics rendering and OpenGL, a popular and widely-supported graphics API.
   
+  \section{Overview}
+  \begin{enumerate}
+    \item Graphics rendering background
+    \item Core concepts
+    \item Introduction to OpenGL
+    \item Brief demo
+    \item Conclusion
+  \end{enumerate}
+  
   \section{Important Terms}
+  \subsection{OpenGL Context}
+  Maintains all OpenGL state, such as the currently bound buffers.
   \subsection{Vertex Array Object (VAO)}
   Contains all of the data needed to render an object. Can have many buffers bound to it.
   \subsection{Vertex Buffer Object (VBO)}

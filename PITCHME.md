@@ -30,6 +30,10 @@ Note:
 
 ![inline](img/triangle-rendering.png)
 
+Note:
+
+* https://www.gamersnexus.net/guides/2429-gpu-rendering-and-game-graphics-explained
+
 ---
 
 ## Where is Graphics Rendering Used?
@@ -173,7 +177,7 @@ Note:
 Note:
 
 * OpenGL is both a specification and a graphics API
-* The specification is defined by the Khronos Group
+* The specification is defined by the Khronos Grou 
 * The API is implemented by the hardware manufacturer
 
 ---
