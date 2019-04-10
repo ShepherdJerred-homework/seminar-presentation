@@ -1,3 +1,4 @@
+@snap[midpoint]
 ## 3D Graphics Rendering with OpenGL
 #### Jerred Shepherd
 
@@ -358,7 +359,7 @@ glDrawArrays(GL_TRIANGLES, 0, 3);
 ## Vertex Shader
 
 ```c
-##version 330 core
+#version 330 core
 
 // A vector of 3 floats at index 0 of the VAO
 layout (location = 0) in vec3 position;
@@ -382,7 +383,7 @@ void main() {
 
 ## Fragment Shader
 ```c
-##version 330 core
+#version 330 core
 
 // A vector of 4 floats in
 in vec4 color;
@@ -507,7 +508,7 @@ glTexImage2D(GL_TEXTURE_2D,
 ## Texture Fragment Shader
 
 ```c
-##version 330 core
+#version 330 core
 
 vec2 textureCoord;
 

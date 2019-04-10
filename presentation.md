@@ -1,7 +1,6 @@
 theme: Plain Jane, 1
 slidenumbers: true
 
-@snap[midpoint]
 # 3D Graphics Rendering with OpenGL
 ## Jerred Shepherd
 
