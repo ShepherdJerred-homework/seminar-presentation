@@ -1,12 +1,12 @@
-# 3D Graphics Rendering with OpenGL
-## Jerred Shepherd
+## 3D Graphics Rendering with OpenGL
+#### Jerred Shepherd
 
 Note:
  Brief introduction about me
 
 ---
 
-# Introduction
+## Introduction
 
 1. Background
 2. Core concepts
@@ -16,7 +16,7 @@ Note:
 
 ---
 
-# What is Graphics Rendering?
+## What is Graphics Rendering?
 
 Note: 
 
@@ -25,13 +25,13 @@ Note:
 
 ---
 
-# What is Graphics Rendering?
+## What is Graphics Rendering?
 
 ![inline](img/triangle-rendering.png)
 
 ---
 
-# Where is Graphics Rendering Used?
+## Where is Graphics Rendering Used?
 * Bootloaders
 * Operating systems
 * Video games
@@ -43,7 +43,7 @@ Note:
 
 ---
 
-# Why Learn Graphics Rendering?
+## Why Learn Graphics Rendering?
 * Gain a better understanding of computers
 * Write better applications
 * Implement your own graphics rendering if needed
@@ -56,7 +56,7 @@ Note:
 
 ---
 
-# Background
+## Background
 * Graphics rendering requires a lot of computation
 * This computation can be done in parallel
 * CPUs aren't well suited
@@ -64,7 +64,7 @@ Note:
 
 ---
 
-# GPU Programming
+## GPU Programming
 * Interacting with GPUs requires the use of a graphics API
 
 Note:
@@ -78,7 +78,7 @@ Note:
 
 ---
 
-# Popular Graphics APIs
+## Popular Graphics APIs
 * OpenGL
 * DirectX
 * Vulkan
@@ -92,7 +92,7 @@ Note:
 
 ---
 
-# Core Concepts of Graphics Rendering
+## Core Concepts of Graphics Rendering
 
 Note:
 
@@ -101,7 +101,7 @@ Note:
 
 ---
 
-# Common Primitives
+## Common Primitives
 * Points
 * Lines
 * Triangles
@@ -114,7 +114,7 @@ Note:
 
 ---
 
-# Common Primitives
+## Common Primitives
 
 ![inline](img/teapot-wireframe.png)
 
@@ -125,7 +125,7 @@ Note:
 
 ---
 
-# Matrices
+## Matrices
 
 * OpenGL uses matrices to transform primitives
 
@@ -136,7 +136,7 @@ Note:
 
 ---
 
-# Projection Matrix
+## Projection Matrix
 * Project objects onto the screen
 
 Note:
@@ -145,7 +145,7 @@ Note:
 
 ---
 
-# Model Matrix
+## Model Matrix
 * Translate
 * Rotate
 * Scale
@@ -157,7 +157,7 @@ Note:
 
 ---
 
-# Introduction to OpenGL
+## Introduction to OpenGL
 
 Note:
 
@@ -165,7 +165,7 @@ Note:
 
 ---
 
-# Introduction to OpenGL
+## Introduction to OpenGL
 
 * Both a specification and an API
 
@@ -177,7 +177,7 @@ Note:
 
 ---
 
-# Where does OpenGL work?
+## Where does OpenGL work?
 
 * Most programming languages
 * All major operating systems
@@ -190,11 +190,11 @@ Note:
 
 ---
 
-# Using OpenGL
+## Using OpenGL
 
 ---
 
-# Java and OpenGL
+## Java and OpenGL
 
 * lwjgl: Lightweight Java Game Library
 * JOGL: Java OpenGL
@@ -209,7 +209,7 @@ Note:
 
 ---
 
-# Creating a Window
+## Creating a Window
 * GLFW: Graphics Library Framework
 
 Note:
@@ -221,7 +221,7 @@ Note:
 
 ---
 
-# Creating a Window with GLFW
+## Creating a Window with GLFW
 
 ```java
 // Initialize GLFW
@@ -248,7 +248,7 @@ Note:
 
 ---
 
-# VAOs and VBOs
+## VAOs and VBOs
 * VAO: Vertex Array Object
   * Stores all of the information to render an object
 * VBO: Vertex Buffer Object
@@ -261,7 +261,7 @@ Note:
 
 ---
 
-# Creating a VBO
+## Creating a VBO
 
 ```java
 // Create a VBO and store its name
@@ -277,7 +277,7 @@ Note:
 
 ---
 
-# Sending Data to a VBO
+## Sending Data to a VBO
 
 ```java
 float[] vertices = new float[]{
@@ -301,7 +301,7 @@ try (var stack = MemoryStack.stackPush()) {
 
 ---
 
-# Creating a VAO
+## Creating a VAO
 
 ```java
 // Create a VAO and store its name
@@ -313,7 +313,7 @@ glBindVertexArray(glVaoName);
 
 ---
 
-# Binding a VBO to a VAO
+## Binding a VBO to a VAO
 
 ```java
 // Bind the previously created VBO
@@ -328,13 +328,13 @@ glEnableVertexAttribArray(0);
 
 ---
 
-# Binding a VBO to a VAO
+## Binding a VBO to a VAO
 
 ![inline](img/vbo-vao-ebo.png)
 
 ---
 
-# Drawing a VAO
+## Drawing a VAO
 
 ```java
 glDrawArrays(GL_TRIANGLES, 0, 3);
@@ -342,23 +342,23 @@ glDrawArrays(GL_TRIANGLES, 0, 3);
 
 ---
 
-# The Rendering Pipeline
+## The Rendering Pipeline
 
 ![inline](img/pipeline.png)
 
 ---
 
-# Shaders
+## Shaders
 
 * Small programs that run on the GPU
 * Allows the user to modify how OpenGL uses data it receives
 
 ---
 
-# Vertex Shader
+## Vertex Shader
 
 ```c
-#version 330 core
+##version 330 core
 
 // A vector of 3 floats at index 0 of the VAO
 layout (location = 0) in vec3 position;
@@ -380,9 +380,9 @@ void main() {
 
 ---
 
-# Fragment Shader
+## Fragment Shader
 ```c
-#version 330 core
+##version 330 core
 
 // A vector of 4 floats in
 in vec4 color;
@@ -399,19 +399,19 @@ void main() {
 
 ---
 
-# Our First Triangle
+## Our First Triangle
 
 ![inline](img/triangle.png)
 
 ---
 
-# Uniforms
+## Uniforms
 * Global variable that does not change during a render call
 * Perfect for storing matrices
 
 ---
 
-# Setting a Uniform
+## Setting a Uniform
 
 ```java
 var matrix = new Matrix4f();
@@ -427,7 +427,7 @@ try (MemoryStack stack = MemoryStack.stackPush()) {
 
 ---
 
-# Using a Uniform
+## Using a Uniform
 
 ```c
 uniform mat4 projectionMatrix;
@@ -441,13 +441,13 @@ void main() {
 
 ---
 
-# Indexed Rendering
+## Indexed Rendering
 
 ![inline](img/indexing.png)
 
 ---
 
-# Code Without Indexing
+## Code Without Indexing
 
 ```java
 float[] vertices = new float[]{
@@ -465,7 +465,7 @@ float[] vertices = new float[]{
 
 ---
 
-# Code With Indexing
+## Code With Indexing
 
 ```java
 float[] vertices = new float[]{
@@ -483,7 +483,7 @@ int[] indices = new int[] {
 
 ---
 
-# Textures
+## Textures
 
 ```java
 // Create and bind a texture
@@ -504,10 +504,10 @@ glTexImage2D(GL_TEXTURE_2D,
 
 ---
 
-# Texture Fragment Shader
+## Texture Fragment Shader
 
 ```c
-#version 330 core
+##version 330 core
 
 vec2 textureCoord;
 
@@ -523,19 +523,19 @@ void main() {
 
 ---
 
-# Demo Application
+## Demo Application
 
 ---
 
-# Conclusion
+## Conclusion
 
 ---
 
-# References
+## References
 
 ---
 
-# Appendix: Clipping
+## Appendix: Clipping
 
 ![inline](img/clipping.png)
 
@@ -545,7 +545,7 @@ https://paroj.github.io/gltut/Positioning/Tut05%20Boundaries%20and%20Clipping.ht
 
 ---
 
-# Appendix: Culling
+## Appendix: Culling
 
 ![inline](img/culling.png)
 
@@ -555,7 +555,7 @@ http://glasnost.itcarlow.ie/~powerk/technology/opengl/hsr_culling.html
 
 ---
 
-# Appendix: Depth Testing
+## Appendix: Depth Testing
 
 
 ![inline](img/depth-test.png)
@@ -566,7 +566,7 @@ https://stackoverflow.com/questions/30310024/opengl-depth-test-doesnt-work
 
 ---
 
-# Appendix: Projection Matrix
+## Appendix: Projection Matrix
 
 $$
   \begin{bmatrix}
@@ -598,13 +598,13 @@ Note:
 
 ---
 
-# Appendix: Projection Matrix
+## Appendix: Projection Matrix
 
 ![inline](img/projection-matrix.png)
 
 ---
 
-# Appendix: Coordinate Spaces
+## Appendix: Coordinate Spaces
 
 ![inline](img/coordinate-systems.png)
 
@@ -614,15 +614,15 @@ https://learnopengl.com/Getting-started/Coordinate-Systems
 
 ---
 
-# Appendix: w coordinate
+## Appendix: w coordinate
 
 ---
 
-# Appendix: OpenGL Language Bindings
+## Appendix: OpenGL Language Bindings
 * Ada
 * C
 * Common LISP
-* C#
+* C##
 * C++
 * Delphi
 * Fortran
@@ -641,7 +641,7 @@ https://www.khronos.org/opengl/wiki/Language_bindings
 
 ---
 
-# Appendix: Texture Filtering
+## Appendix: Texture Filtering
 ![inline](img/texture-filtering.png)
 
 Note:
@@ -650,7 +650,7 @@ https://learnopengl.com/Getting-started/Textures
 
 ---
 
-# Appendix: Texture wrapping
+## Appendix: Texture wrapping
 ![inline](img/texture-wrapping.png)
 
 Note:
@@ -659,7 +659,7 @@ https://learnopengl.com/Getting-started/Textures
 
 ---
 
-# Appendix: Mipmaps
+## Appendix: Mipmaps
 ![inline](img/mipmap.png)
 
 Note:
@@ -668,5 +668,5 @@ https://learnopengl.com/Getting-started/Textures
 
 ---
 
-# Appendix: Pipeline Visualization
+## Appendix: Pipeline Visualization
 ![inline](img/pipeline-visualized.png)
