@@ -569,7 +569,6 @@ https://stackoverflow.com/questions/30310024/opengl-depth-test-doesnt-work
 ## Appendix: Projection Matrix
 
 `\[
-$$
   \begin{bmatrix}
     \dfrac{\dfrac{1}{tan(\dfrac{\mathit{fov}}{2})}}{a} &
     0 &
@@ -588,7 +587,6 @@ $$
     -1 &
     0
   \end{bmatrix}
-$$
 \]`
 
 Note:
