@@ -1,2 +1,14 @@
-theme : white
-code-line-numbers : true
+
+# General
+theme: white
+layout: top
+transition: fade
+title : "3D Graphics Rendering with OpenGL"
+published: true
+remote-control: true
+eager-loading: true
+mathjax: TeX-MML-AM_HTMLorMML-full
+
+# Code settings
+code-line-numbers: true
+highlight: monokai
