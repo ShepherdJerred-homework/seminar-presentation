@@ -1,10 +1,8 @@
-theme: Plain Jane, 1
-slidenumbers: true
-
 # 3D Graphics Rendering with OpenGL
 ## Jerred Shepherd
 
-^ Brief introduction about me
+Note:
+ Brief introduction about me
 
 ---
 
@@ -20,9 +18,10 @@ slidenumbers: true
 
 # What is Graphics Rendering?
 
-^
-The process of creating an image from a 2D or 3D scene
-We see it in action every day on our phones, laptops, and every Friday on this projector
+Note: 
+
+* The process of creating an image from a 2D or 3D scene
+* We see it in action every day on our phones, laptops, and every Friday on this projector
 
 ---
 
@@ -38,8 +37,9 @@ We see it in action every day on our phones, laptops, and every Friday on this p
 * Video games
 * Computer animation
 
-^
-Graphics rendering is used in very low-level places like text tendering for a bootloader, and high-level places like videos game and desktop applications
+Note:
+
+* Graphics rendering is used in very low-level places like text tendering for a bootloader, and high-level places like videos game and desktop applications
 
 ---
 
@@ -49,9 +49,10 @@ Graphics rendering is used in very low-level places like text tendering for a bo
 * Implement your own graphics rendering if needed
 * Exposure to GPU programming
 
-^
-Computer graphics is something that we use every day, but most of us probably don't know much about it
-Most of us won't write graphical programs running at such a low level, but it is useful to understand how things work
+Note:
+
+* Computer graphics is something that we use every day, but most of us probably don't know much about it
+* Most of us won't write graphical programs running at such a low level, but it is useful to understand how things work
 
 ---
 
@@ -66,13 +67,14 @@ Most of us won't write graphical programs running at such a low level, but it is
 # GPU Programming
 * Interacting with GPUs requires the use of a graphics API
 
-^
-Programming a CPU involves writing code, compiling it, and then executing a binary
-Using a GPU is different
-Instead of directly writing code, you use a API to communicate with the GPU
-You can also write programs that execute on the GPU, but you still need to use APIs to load and execute the program
-APIs exist for graphics programming, and for general computation
-GPUs having become very popular for compute-heavy tasks, such as AI and data processing
+Note:
+
+* Programming a CPU involves writing code, compiling it, and then executing a binary
+* Using a GPU is different
+* Instead of directly writing code, you use a API to communicate with the GPU
+* You can also write programs that execute on the GPU, but you still need to use APIs to load and execute the program
+* APIs exist for graphics programming, and for general computation
+* GPUs having become very popular for compute-heavy tasks, such as AI and data processing
 
 ---
 
@@ -82,17 +84,20 @@ GPUs having become very popular for compute-heavy tasks, such as AI and data pro
 * Vulkan
 * Metal
 
-^
-Many graphics APIs exist
-Which one you can use depends on your operating system and graphics card
-OpenGL is a popular cross-platform API, and is supported on all modern consumer graphics cards
+Note:
+
+* Many graphics APIs exist
+* Which one you can use depends on your operating system and graphics card
+* OpenGL is a popular cross-platform API, and is supported on all modern consumer graphics cards
 
 ---
 
 # Core Concepts of Graphics Rendering
 
-^ Before we dig into OpenGL, it's important to understand some core concepts of computer graphics
-These concepts will transfer over to any graphics API
+Note:
+
+* Before we dig into OpenGL, it's important to understand some core concepts of computer graphics
+* These concepts will transfer over to any graphics API
 
 ---
 
@@ -101,10 +106,11 @@ These concepts will transfer over to any graphics API
 * Lines
 * Triangles
 
-^
-Primitives are defined as vectors with a length of four
-They contain x, y, z, and w elements
-These are the three most important primivites in graphics rendering
+Note:
+
+* Primitives are defined as vectors with a length of four
+* They contain x, y, z, and w elements
+* These are the three most important primivites in graphics rendering
 
 ---
 
@@ -112,9 +118,10 @@ These are the three most important primivites in graphics rendering
 
 ![inline](img/teapot-wireframe.png)
 
-^
-With these primitives, you can draw anything you want
-https://fgiesen.wordpress.com/2011/07/01/a-trip-through-the-graphics-pipeline-2011-part-1/
+Note:
+
+* With these primitives, you can draw anything you want
+* https://fgiesen.wordpress.com/2011/07/01/a-trip-through-the-graphics-pipeline-2011-part-1/
 
 ---
 
@@ -122,17 +129,19 @@ https://fgiesen.wordpress.com/2011/07/01/a-trip-through-the-graphics-pipeline-20
 
 * OpenGL uses matrices to transform primitives
 
-^
-OpenGL uses matrices to transform the vector we define primitives with
-There are several common matrices used -- we will cover model and projection matrices
+Note:
+
+* OpenGL uses matrices to transform the vector we define primitives with
+* There are several common matrices used -- we will cover model and projection matrices
 
 ---
 
 # Projection Matrix
 * Project objects onto the screen
 
-^
-Projection matrices define how our primitives are projected on the screen from a 3D space to a 2D space
+Note:
+
+* Projection matrices define how our primitives are projected on the screen from a 3D space to a 2D space
 
 ---
 
@@ -141,15 +150,18 @@ Projection matrices define how our primitives are projected on the screen from a
 * Rotate
 * Scale
 
-^
-Model matrices modify positions of primitives
-Model matrices allow us to translate, rotate, and scale primitives
+Note:
+
+* Model matrices modify positions of primitives
+* Model matrices allow us to translate, rotate, and scale primitives
 
 ---
 
 # Introduction to OpenGL
 
-^ Now we'll be apply these concepts with OpenGL
+Note:
+
+* Now we'll be apply these concepts with OpenGL
 
 ---
 
@@ -157,10 +169,11 @@ Model matrices allow us to translate, rotate, and scale primitives
 
 * Both a specification and an API
 
-^
-OpenGL is both a specification and a graphics API
-The specification is defined by the Khronos Group
-The API is implemented by the hardware manufacturer
+Note:
+
+* OpenGL is both a specification and a graphics API
+* The specification is defined by the Khronos Group
+* The API is implemented by the hardware manufacturer
 
 ---
 
@@ -170,9 +183,10 @@ The API is implemented by the hardware manufacturer
 * All major operating systems
 * All major windowing systems
 
-^
-OpenGL is callable from most programming languages
-OpenGL works one every major operating system, and with every major windowing system
+Note:
+
+* OpenGL is callable from most programming languages
+* OpenGL works one every major operating system, and with every major windowing system
 
 ---
 
@@ -185,23 +199,25 @@ OpenGL works one every major operating system, and with every major windowing sy
 * lwjgl: Lightweight Java Game Library
 * JOGL: Java OpenGL
 
-^
-Java has great support for OpenGL through a library called the Lightweight Java Game Library (lwjgl)
-Java and OpenGL is a great combination because it allows you to easily create cross-platform graphical applications
-lwjgl has support for many other native libraries, some of which which we will use
-We will begin with creating a blank window on our desktop
-This isn't particularly impressive, but it is a good place to start
+Note:
+
+* Java has great support for OpenGL through a library called the Lightweight Java Game Library (lwjgl)
+* Java and OpenGL is a great combination because it allows you to easily create cross-platform graphical applications
+* lwjgl has support for many other native libraries, some of which which we will use
+* We will begin with creating a blank window on our desktop
+* This isn't particularly impressive, but it is a good place to start
 
 ---
 
 # Creating a Window
 * GLFW: Graphics Library Framework
 
-^
-GLFW, or Graphics Library Framework, is a cross-platform library for creating windows and handling window events such as input
-GLFW will create our window for us, and something called an OpenGL context
-All of our drawing will occur within this OpenGL context
-OpenGL context: stores OpenGL state. All OpenGL commands will effect the current context.
+Note:
+
+* GLFW, or Graphics Library Framework, is a cross-platform library for creating windows and handling window events such as input
+* GLFW will create our window for us, and something called an OpenGL context
+* All of our drawing will occur within this OpenGL context
+* OpenGL context: stores OpenGL state. All OpenGL commands will effect the current context.
 
 ---
 
@@ -226,8 +242,9 @@ glfwShowWindow(window);
 GL.createCapabilities();
 ```
 
-^
-glfwCreateWindow: First NULL parameter is the fullscreen monitor to use, second NULL parameter is the window to share resources with (VBOs, textures, etc.) 
+Note:
+
+* glfwCreateWindow: First NULL parameter is the fullscreen monitor to use, second NULL parameter is the window to share resources with (VBOs, textures, etc.) 
 
 ---
 
@@ -236,10 +253,11 @@ glfwCreateWindow: First NULL parameter is the fullscreen monitor to use, second 
   * Stores all of the information to render an object
 * VBO: Vertex Buffer Object
 
-^
-OpenGL stores vertices in vertex buffer objects
-These buffers are then bound to vertex array objects
-A VAO is then bound and drawn by OpenGL
+Note:
+
+* OpenGL stores vertices in vertex buffer objects
+* These buffers are then bound to vertex array objects
+* A VAO is then bound and drawn by OpenGL
 
 ---
 
@@ -253,8 +271,9 @@ glVboName = glGenBuffers();
 glBindBuffer(GL_ARRAY_BUFFER, glVboName);
 ```
 
-^
-This is a very common pattern -- creating a name and binding it
+Note:
+
+* This is a very common pattern -- creating a name and binding it
 
 ---
 
@@ -520,7 +539,8 @@ void main() {
 
 ![inline](img/clipping.png)
 
-^
+Note:
+
 https://paroj.github.io/gltut/Positioning/Tut05%20Boundaries%20and%20Clipping.html
 
 ---
@@ -529,7 +549,8 @@ https://paroj.github.io/gltut/Positioning/Tut05%20Boundaries%20and%20Clipping.ht
 
 ![inline](img/culling.png)
 
-^
+Note:
+
 http://glasnost.itcarlow.ie/~powerk/technology/opengl/hsr_culling.html
 
 ---
@@ -539,7 +560,8 @@ http://glasnost.itcarlow.ie/~powerk/technology/opengl/hsr_culling.html
 
 ![inline](img/depth-test.png)
 
-^
+Note:
+
 https://stackoverflow.com/questions/30310024/opengl-depth-test-doesnt-work
 
 ---
@@ -567,9 +589,12 @@ $$
   \end{bmatrix}
 $$
 
-^ fov is the of field, or the angle of the area that is visible
-^ z near is the closest visible z coordinate
-^ z far is the furthest visible z coordinate
+Note:
+ fov is the of field, or the angle of the area that is visible
+Note:
+ z near is the closest visible z coordinate
+Note:
+ z far is the furthest visible z coordinate
 
 ---
 
@@ -583,7 +608,8 @@ $$
 
 ![inline](img/coordinate-systems.png)
 
-^
+Note:
+
 https://learnopengl.com/Getting-started/Coordinate-Systems
 
 ---
@@ -610,7 +636,8 @@ https://learnopengl.com/Getting-started/Coordinate-Systems
 * Ruby
 * Visual Basic
 
-^
+Note:
+
 https://www.khronos.org/opengl/wiki/Language_bindings
 
 ---
@@ -618,7 +645,8 @@ https://www.khronos.org/opengl/wiki/Language_bindings
 # Appendix: Texture Filtering
 ![inline](img/texture-filtering.png)
 
-^
+Note:
+
 https://learnopengl.com/Getting-started/Textures
 
 ---
@@ -626,7 +654,8 @@ https://learnopengl.com/Getting-started/Textures
 # Appendix: Texture wrapping
 ![inline](img/texture-wrapping.png)
 
-^
+Note:
+
 https://learnopengl.com/Getting-started/Textures
 
 ---
@@ -634,7 +663,8 @@ https://learnopengl.com/Getting-started/Textures
 # Appendix: Mipmaps
 ![inline](img/mipmap.png)
 
-^
+Note:
+
 https://learnopengl.com/Getting-started/Textures
 
 ---

@@ -511,8 +511,20 @@ void main() {
 # Conclusion
 
 ---
+[.autoscale: true]
 
 # References
+[1] A. H. Bejarano, “Lwjglgamedev.” [Online]. Available: ahbejarano.gitbook.io/lwjglgamedev/
+[2] J. de Vries, “Learn opengl.” [Online]. Available: learnopengl.com/
+[3] M. Galloy, “Cpu vs gpu performance.” [Online]. Available: michaelgalloy.com/2013/06/11/ cpu-vs-gpu-performance.html
+[4] J. Larkin, “Gpu fundamentals.” [Online]. Available: www.icl.utk.edu/~luszczek/teaching/courses/ fall2016/cosc462/pdf/GPU_Fundamentals.pdf
+[5] lwjgl, “Lightweight java game library.” [Online]. Available: www.lwjgl.org
+[6] lwjgl wiki, “Lwjgl wiki.” [Online]. Available: github.com/LWJGL/lwjgl3-wiki/
+[7] A. Masserann, “Opengl tutorial.” [Online]. Available: www.opengl-tutorial.org/
+[8] J. L. McKesson, “Learning modern 3d graphics programming.” [Online]. Available: paroj.github.io/ gltut/
+[9] Khronos, “Opengl wiki.” [Online]. Available: www.khronos.org/opengl/wiki/Main_Page
+[10] A. Overvoorde, “Opengl tutorial.” [Online]. Available: open.gl/
+[11] e. a. Graham Sellers, OpenGL Superbible: Comprehensive Tutorial and Reference. Addison-Wesley, 2016.
 
 ---
 
@@ -591,8 +603,8 @@ https://learnopengl.com/Getting-started/Coordinate-Systems
 # Appendix: w coordinate
 
 ---
-
 [.autoscale: true]
+
 # Appendix: OpenGL Language Bindings
 * Ada
 * C
