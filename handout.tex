@@ -70,9 +70,18 @@
 \renewcommand{\headrulewidth}{0pt}
 \fancyfoot[R]{\thepage}
 
+% Glossary
+\usepackage{glossaries}
+\makeglossaries
+
+\newglossaryentry{latex} {
+  name=latex,
+  description={Is a mark up language specially suited for scientific documents}
+}
+
 % Create title
 \usepackage{titling}
-\setlength{\droptitle}{-70pt}
+\setlength{\droptitle}{-20pt}
 \title{\Large\textbf{3D Graphics Rendering with OpenGL}}
 \author{Jerred Shepherd}
 
@@ -85,30 +94,55 @@
   \section{Abstract}
   Computer graphics is an essential component to any consumer facing computer. Efficiently rendering computer graphics requires the use of specialized hardware in the form of graphics processing units. GPUs work differently than the CPUs which programmers are experienced with. This difference is due to the GPUs approach to parallelization. Graphics APIs have been created to help programmers write performant and portable code for GPUs. This paper will introduce the core concepts of 3D graphics rendering and OpenGL, a popular and widely-supported graphics API.
   
-  \section{Overview}
+  \section{Presentation Overview}
   \begin{enumerate}
+    \itemsep0em
     \item Graphics rendering background
     \item Core concepts
     \item Introduction to OpenGL
     \item Brief demo
     \item Conclusion
   \end{enumerate}
+    
+  \printglossaries
   
   \section{Important Terms}
-  \subsection{OpenGL Context}
+  \textbf{Primitive:}
+  A collection of vertices that form the geometry of an object being rendered. Examples include points, lines, and triangles.
+  \\
+  \textbf{Projection Matrix:}
+  Maps the position of primitives to screen coordinates.
+  \\
+  \textbf{Model Matrix:}
+  Translates, rotates, and scales primitives.
+  \\
+  \textbf{OpenGL Context:}
   Maintains all OpenGL state, such as the currently bound buffers.
-  \subsection{Vertex Array Object (VAO)}
-  Contains all of the data needed to render an object. Can have many buffers bound to it.
-  \subsection{Vertex Buffer Object (VBO)}
-  Contains data that is passed to the vertex shader. Often used to store vertex coordinates, color data, and texture coordinates.
-  \subsection{Rasterization}
-  The process of converting primitives to fragments.
-  \subsection{Fragment}
+  \\
+  \textbf{Vertex Array Object (VAO):}
+  Contains all of the data needed to render an object. Can have many VBOs bound to it.
+  \\
+  \textbf{Vertex Buffer Object (VBO):}
+  Contains data that is passed to the OpenGL pipeline. Often used to store vertex coordinates, color data, and texture coordinates.
+  \\
+  \textbf{Fragment:}
   An element that contributes to the final color of a pixel on the screen.
-  \subsection{Vertex Shader}
+  \\
+  \textbf{Rasterization:}
+  The process of converting primitives to fragments.
+  \\
+  \textbf{Vertex Shader:}
   The first programmable stage of the OpenGL pipeline. Responsible for determining the position of each vertex.
-  \subsection{Fragment Shader}
+  \\
+  \textbf{Fragment Shader:}
   Partially determines the color of fragments passed from the rasterization stage of the pipeline.
+  \\
+  \textbf{Texture:}
+  An image file that is used to color the fragments of a primitive.
+  
+  \section{Notes}
+  The demo application source is available at \url{https://github.com/ShepherdJerred-homework/seminar-application}
+  
   \clearpage
     
   \nocite{*}
